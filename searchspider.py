@@ -4,7 +4,6 @@ from lxml import etree
 from urllib import parse
 from fake_useragent import UserAgent
 
-
 class spider(object):
     def __init__(self):
         self.url = 'http://www.35yao.com/invest/search.php?kw={}'
@@ -43,5 +42,6 @@ class spider(object):
 
     def run(self, word):
         result = self.parse_html(word)
+        return result
         # print(result)
 
