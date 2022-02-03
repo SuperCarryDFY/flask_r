@@ -9,6 +9,7 @@ PyMySQL==1.0.2
 SQLAlchemy==1.4.29
 Werkzeug==2.0.2
 requests==2.25.1
+wheel==0.36.2
 lxml==4.6.3
 urllib3==1.26.4
 fake-useragent==0.1.11
