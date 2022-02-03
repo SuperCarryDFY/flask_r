@@ -19,7 +19,7 @@ class spider(object):
         res = requests.get(url=self.url, headers=self.headers, timeout=5)
         res.encoding = 'utf-8'
         html = res.text
-        # print(type(html))
+        print(type(html))
         with open('2.txt', 'w', encoding='utf-8') as f:
             f.write(html)
         return html
