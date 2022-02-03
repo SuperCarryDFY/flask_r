@@ -3,6 +3,7 @@ import requests
 from lxml import etree
 from urllib import parse
 from fake_useragent import UserAgent
+import json
 
 class spider(object):
     def __init__(self):
@@ -18,10 +19,11 @@ class spider(object):
         res = requests.get(url=self.url, headers=self.headers, timeout=5)
         res.encoding = 'utf-8'
         html = res.text
-        # print(type(html))
-        '''with open('2.txt', 'w', encoding='utf-8') as f:
+        '''
+        with open('2.txt', 'w', encoding='utf-8') as f:
             f.write(html)
-        return html'''
+        '''
+        return html
 
     def parse_html(self, word):
         html = self.get_html(word)
