@@ -67,10 +67,9 @@ def get_count():
     return make_succ_response(0) if counter is None else make_succ_response(counter.count)
 
 
-@app.route('/api/search', methods=['GET'])
+@app.route('/api/search', methods=['POST'])
 def get_search():
     s = searchspider.spider()
-
 
     params = request.get_json()
 
@@ -78,6 +77,7 @@ def get_search():
         return make_err_response('缺少word参数')
 
     word = params['word']
+    
 
     result_json = json.dumps(s.run(word))
 
