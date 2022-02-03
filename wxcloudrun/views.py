@@ -70,6 +70,16 @@ def get_count():
 @app.route('/api/search', methods=['GET'])
 def get_search():
     s = searchspider.spider()
-    result_json = json.dumps(s.run("阿司匹林"))
+
+
+    params = request.get_json()
+
+    if 'word' not in params:
+        return make_err_response('缺少word参数')
+
+    word = params['word']
+
+    result_json = json.dumps(s.run(word))
+
     return result_json
 
