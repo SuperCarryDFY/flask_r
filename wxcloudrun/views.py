@@ -4,6 +4,8 @@ from run import app
 from wxcloudrun.dao import delete_counterbyid, query_counterbyid, insert_counter, update_counterbyid
 from wxcloudrun.model import Counters
 from wxcloudrun.response import make_succ_empty_response, make_succ_response, make_err_response
+import searchspider
+import json
 
 @app.route('/')
 def index():
@@ -64,10 +66,10 @@ def get_count():
     counter = Counters.query.filter(Counters.id == 1).first()
     return make_succ_response(0) if counter is None else make_succ_response(counter.count)
 
-'''
+
 @app.route('/api/search', methods=['GET'])
 def get_search():
     s = searchspider.spider()
     result_json = json.dumps(s.run("阿司匹林"))
     return result_json
-'''
+
