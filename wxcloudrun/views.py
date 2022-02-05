@@ -86,7 +86,7 @@ def get_search():
 
 
 @app.route('/api/vidsearch', methods=['POST'])
-def get_search():
+def get_vidsearch():
     
     s = vidspider.vidspider()
 
