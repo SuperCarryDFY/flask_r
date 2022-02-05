@@ -5,6 +5,7 @@ from wxcloudrun.dao import delete_counterbyid, query_counterbyid, insert_counter
 from wxcloudrun.model import Counters
 from wxcloudrun.response import make_succ_empty_response, make_succ_response, make_err_response
 import searchspider
+import vidspider
 import json
 
 @app.route('/')
@@ -69,6 +70,7 @@ def get_count():
 
 @app.route('/api/search', methods=['POST'])
 def get_search():
+    
     s = searchspider.spider()
 
     params = request.get_json()
@@ -78,8 +80,23 @@ def get_search():
 
     word = params['word']
     
-
     result_json = json.dumps(s.run(word))
 
     return result_json
 
+
+@app.route('/api/vidsearch', methods=['POST'])
+def get_search():
+    
+    s = vidspider.vidspider()
+
+    params = request.get_json()
+
+    if 'word' not in params:
+        return make_err_response('缺少word参数')
+
+    word = params['word']
+    
+    result_json = json.dumps(s.run(word))
+
+    return result_json
