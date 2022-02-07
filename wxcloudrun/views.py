@@ -6,6 +6,7 @@ from wxcloudrun.model import Counters
 from wxcloudrun.response import make_succ_empty_response, make_succ_response, make_err_response
 import searchspider
 import vidspider
+import kepuspider
 import json
 
 @app.route('/')
@@ -98,5 +99,15 @@ def get_vidsearch():
     word = params['word']
     
     result_json = json.dumps(s.run(word))
+
+    return result_json
+
+
+@app.route('/api/kepusearch', methods=['POST'])
+def get_kepusearch():
+    
+    s = kepuspider.kepuspider()
+    
+    result_json = json.dumps(s.run())
 
     return result_json
