@@ -20,7 +20,7 @@ class kepuspider(object):
     def get_html(self, url):
         res = requests.get(url=self.url, headers=self.headers, timeout=5)
         res.encoding = 'gb2312'
-        html = res.text.encode('gb2312')
+        html = res.text
         '''
         print(type(html))
         with open('1.txt', 'wb') as f:
