@@ -7,6 +7,7 @@ from wxcloudrun.response import make_succ_empty_response, make_succ_response, ma
 import searchspider
 import vidspider
 import kepuspider
+import pricespider
 import json
 
 @app.route('/')
@@ -111,3 +112,20 @@ def get_kepusearch():
     result_json = json.dumps(s.run())
 
     return result_json
+
+@app.route('/api/pricesearch', methods=['POST'])
+def get_pricesearch():
+    
+    s = pricespider.pricespider()
+
+    params = request.get_json()
+
+    if 'word' not in params:
+        return make_err_response('缺少word参数')
+
+    word = params['word']
+    
+    result_json = json.dumps(s.run(word))
+
+    return result_json
+
