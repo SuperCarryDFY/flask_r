@@ -39,7 +39,11 @@ class pricespider(object):
                 iname = iname.xpath('string(.)').strip().replace('\n','')
                 # print(iname)
                 # 获得isrc
-                isrc = block.xpath("./div/div[5]/span/a/text()")[0]
+                isrc = block.xpath("./div/div[5]/span/a/text()")
+                if isrc == [] :
+                    isrc = "来源未知"
+                else:
+                    isrc = isrc[0]
                 # 获得iprice
                 iprice = block.xpath("./div/div[2]/strong/i/text()")[0]
                 # 获得ipic
