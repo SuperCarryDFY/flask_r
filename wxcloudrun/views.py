@@ -8,6 +8,7 @@ import searchspider
 import vidspider
 import kepuspider
 import pricespider
+import zhaoyaospider
 import json
 
 @app.route('/')
@@ -129,3 +130,11 @@ def get_pricesearch():
 
     return result_json
 
+@app.route('/api/zhaoyaosearch', methods=['POST'])
+def get_kepusearch():
+    
+    s = zhaoyaospider.zhaoyaospider()
+    
+    result_json = json.dumps(s.run())
+
+    return result_json
