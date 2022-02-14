@@ -40,7 +40,7 @@ class kepuspider(object):
         text_list_dic = [[] for _ in range(len(h_list))]
         for i in range(len(h_list)):
             k = 1
-            while True:
+            while k<8:
                 head = p.xpath("/html/body/div[@class='foot clearfix']/div[@class='w1000 Conbg Conbg2 clearfix']/div["
                                "@class='p5Con clearfix']/div[@class='p5box p5box{}']/div[@class='p5con clearfix']["
                                "{}]/div/h3/a/text()".format(i + 1, k))
