@@ -29,7 +29,7 @@ class vidspider(object):
         if html:
             p = etree.HTML(html)
             blocks = p.xpath(
-                "//div[@class='result_item result_item_h _quickopen']")
+                "//div[@class='result_item result_item_h']")
             text_list_dic = []
             for block in blocks:
                 # 得到vid
