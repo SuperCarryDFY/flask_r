@@ -131,7 +131,7 @@ def get_pricesearch():
     return result_json
 
 @app.route('/api/zhaoyaosearch', methods=['POST'])
-def get_kepusearch():
+def get_zhaoyaosearch():
     
     s = zhaoyaospider.zhaoyaospider()
     
