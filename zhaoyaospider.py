@@ -45,7 +45,11 @@ class zhaoyaospider(object):
             for block in blocks:
                 iname = block.xpath("./td[3]/ul/li[1]/a/strong[@class='px14']//text()")
                 iname = ''.join(iname)
-                img_url = block.xpath("./td[1]/div/a/img/@src")[0]
+                img_url = block.xpath("./td[1]/div/a/img/@original")
+                if img_url:
+                    img_url = img_url[0]
+                else:
+                    img_url = block.xpath("./td[1]/div/a/img/@src")[0]
                 dic = {"name": iname, "img_url": img_url}
                 blocks_list_dic.append(dic)
                 # print(dic)
