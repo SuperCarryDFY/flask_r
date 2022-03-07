@@ -35,6 +35,7 @@ class vidspider(object):
                 # 得到vid
                 url = block.xpath("./h2[@class='result_title']/a/@href")[0]
                 vid = url[-16:-5]
+                print(vid)
                 # 得到head
                 head = block.xpath("./a/img/@alt")[0].replace('\x05', '').replace('\x06', '')
                 # 得到date
