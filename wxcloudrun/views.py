@@ -11,6 +11,7 @@ import pricespider
 import zhaoyaospider
 import json
 import price2spider
+import price3spider
 
 @app.route('/')
 def index():
@@ -147,6 +148,23 @@ def get_price2search():
     result_json = json.dumps(s.run(word))
 
     return result_json
+
+@app.route('/api/price3search', methods=['POST'])
+def get_price3search():
+    
+    s = price3spider.pricespider()
+
+    params = request.get_json()
+
+    if 'iurl' not in params:
+        return make_err_response('缺少word参数')
+
+    iurl = params['iurl']
+    
+    result_json = json.dumps(s.run(iurl))
+
+    return result_json
+
 
 @app.route('/api/zhaoyaosearch', methods=['POST'])
 def get_zhaoyaosearch():
