@@ -161,7 +161,7 @@ def get_price3search():
 
     iurl = params['iurl']
     
-    result_json = json.dumps(s.run(iurl))
+    result_json = json.dumps(s.getinfo(iurl))
 
     return result_json
 
