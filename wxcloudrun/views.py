@@ -10,6 +10,7 @@ import kepuspider
 import pricespider
 import zhaoyaospider
 import json
+import price2spider
 
 @app.route('/')
 def index():
@@ -118,6 +119,23 @@ def get_kepusearch():
 def get_pricesearch():
     
     s = pricespider.pricespider()
+
+    params = request.get_json()
+
+    if 'word' not in params:
+        return make_err_response('缺少word参数')
+
+    word = params['word']
+    
+    result_json = json.dumps(s.run(word))
+
+    return result_json
+
+
+@app.route('/api/price2search', methods=['POST'])
+def get_pricesearch():
+    
+    s = price2spider.pricespider()
 
     params = request.get_json()
 
