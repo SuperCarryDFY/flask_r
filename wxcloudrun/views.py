@@ -133,7 +133,7 @@ def get_pricesearch():
 
 
 @app.route('/api/price2search', methods=['POST'])
-def get_pricesearch():
+def get_price2search():
     
     s = price2spider.pricespider()
 
