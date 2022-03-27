@@ -10,8 +10,8 @@ import kepuspider
 import pricespider
 import zhaoyaospider
 import json
-import price2spider
-import price3spider
+import yyw_spider
+import xywy_spider
 
 @app.route('/')
 def index():
@@ -133,10 +133,21 @@ def get_pricesearch():
     return result_json
 
 
-@app.route('/api/price2search', methods=['POST'])
-def get_price2search():
+
+@app.route('/api/zhaoyaosearch', methods=['POST'])
+def get_zhaoyaosearch():
     
-    s = price2spider.pricespider()
+    s = zhaoyaospider.zhaoyaospider()
+    
+    result_json = json.dumps(s.run())
+
+    return result_json
+
+
+@app.route('/api/xywysearch', methods=['POST'])
+def get_xywysearch():
+    
+    s = xywy_spider.xywy_spider()
 
     params = request.get_json()
 
@@ -149,28 +160,19 @@ def get_price2search():
 
     return result_json
 
-@app.route('/api/price3search', methods=['POST'])
-def get_price3search():
+
+@app.route('/api/yywsearch', methods=['POST'])
+def get_yywsearch():
     
-    s = price3spider.pricespider()
+    s = yyw_spider.yyw_spider()
 
     params = request.get_json()
 
-    if 'iurl' not in params:
+    if 'word' not in params:
         return make_err_response('缺少word参数')
 
-    iurl = params['iurl']
+    word = params['word']
     
-    result_json = json.dumps(s.getinfo('https:'+iurl))
-
-    return result_json
-
-
-@app.route('/api/zhaoyaosearch', methods=['POST'])
-def get_zhaoyaosearch():
-    
-    s = zhaoyaospider.zhaoyaospider()
-    
-    result_json = json.dumps(s.run())
+    result_json = json.dumps(s.run(word))
 
     return result_json
