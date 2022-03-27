@@ -173,6 +173,6 @@ def get_yywsearch():
 
     word = params['word']
     
-    result_json = json.dumps(s.run(word))
+    result_json = json.dumps(s.get_html(word))
 
     return result_json

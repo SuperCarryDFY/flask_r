@@ -1,3 +1,4 @@
+from email import header
 import requests
 from lxml import etree
 from urllib import parse
@@ -28,11 +29,12 @@ class yyw_spider(object):
         res = requests.get(url=self.url, headers=self.headers, timeout=5)
         res.encoding = 'gbk'
         html = res.text
+        return dict(res.request.headers)
         # print(type(html))
         
-        with open('4.txt', 'w', encoding='utf-8') as f:
-            f.write(html)
-        return html
+        # with open('4.txt', 'w', encoding='utf-8') as f:
+        #     f.write(html)
+        # return html
 
     def parse_html(self, word):
         html = self.get_html(word)
