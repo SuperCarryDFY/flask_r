@@ -55,5 +55,5 @@ class pricespider(object):
             return blocks_list_dic
 
     def run(self, word):
-        result = self.parse_JDhtml(word)
+        result = self.get_JDhtml(word)
         return result
