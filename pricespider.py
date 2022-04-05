@@ -8,7 +8,6 @@ from fake_useragent import UserAgent
 class pricespider(object):
     def __init__(self):
         self.JDurl = 'https://search.jd.com/Search?keyword={}'
-        self.TBurl = 'https://s.taobao.com/search?q={}'
         self.headers = {
             "User-Agent": UserAgent().firefox
         }
@@ -55,5 +54,5 @@ class pricespider(object):
             return blocks_list_dic
 
     def run(self, word):
-        result = self.parse_JDhtml(word)
+        result = self.get_JDhtml(word)
         return result
