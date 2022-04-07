@@ -42,11 +42,11 @@ class xywy_spider(object):
                 isrc = ''.join(block.xpath("./div[1]/div[2]/p[2]/text()")).strip()
                 
                 # 获得iinfo
-                iinfo = ''.join(block.xpath("./div[1]/div[2]/p[1]/text()")).strip()
+                # iinfo = ''.join(block.xpath("./div[1]/div[2]/p[1]/text()")).strip()
                 # 获得ipic
                 ipic = ''.join(block.xpath("./div[1]/div[1]/a/img/@src")).strip()
 
-                dic = {"name":iname,"src":isrc,"price":iprice,"ipic":ipic,"iinfo":iinfo}
+                dic = {"name":iname,"src":isrc,"price":iprice,"ipic":ipic}
                 print(dic)
                 blocks_list_dic.append(dic)
             
