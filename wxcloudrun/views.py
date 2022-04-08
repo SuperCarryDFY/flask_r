@@ -184,7 +184,7 @@ def get_yywsearch():
 @app.route('/api/yywsearch_v2', methods=['POST'])
 def get_yywsearch_v2():
     
-    s = yywspider_v2.yywspider_v2
+    s = yywspider_v2.yywspider_v2()
 
     params = request.get_json()
 
@@ -200,7 +200,7 @@ def get_yywsearch_v2():
 @app.route('/api/jdsearch_v2', methods=['POST'])
 def get_jdsearch_v2():
     
-    s = jdspider_v2.jdspider_v2
+    s = jdspider_v2.jdspider_v2()
 
     params = request.get_json()
 
