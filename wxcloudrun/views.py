@@ -12,6 +12,8 @@ import zhaoyaospider
 import json
 import yyw_spider
 import xywy_spider
+import yywspider_v2
+import jdspider_v2
 
 @app.route('/')
 def index():
@@ -175,5 +177,38 @@ def get_yywsearch():
     word = params['word']
     
     result_json = json.dumps(s.run(word))
+
+    return result_json
+
+
+@app.route('/api/yywsearch_v2', methods=['POST'])
+def get_yywsearch_v2():
+    
+    s = yywspider_v2.yywspider_v2
+
+    params = request.get_json()
+
+    if 'word' not in params:
+        return make_err_response('缺少word参数')
+
+    word = params['word']
+    
+    result_json = json.dumps(s.get_html(word))
+
+    return result_json
+
+@app.route('/api/jdsearch_v2', methods=['POST'])
+def get_jdsearch_v2():
+    
+    s = jdspider_v2.jdspider_v2
+
+    params = request.get_json()
+
+    if 'word' not in params:
+        return make_err_response('缺少word参数')
+
+    word = params['word']
+    
+    result_json = json.dumps(s.get_html(word))
 
     return result_json
